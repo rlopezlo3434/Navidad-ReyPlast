@@ -1,0 +1,46 @@
+
+   <div class="container">
+    <h1>🎁 Lista de Regalos de Navidad</h1>
+    
+    <!-- Formulario para ingresar el nombre del usuario -->
+    <form (submit)="setUser($event)" class="user-form">
+      <input
+        type="text"
+        placeholder="Escribe tu nombre o un código único"
+        [(ngModel)]="userName"
+        name="userName"
+        (input)="checkUserName()"
+        required
+      />
+      <button type="submit">Establecer nombre</button>
+    </form>
+  
+    <!-- Formulario para agregar regalos, visible solo después de establecer el nombre -->
+    <div *ngIf="userName">
+      <form (submit)="addGift($event)" class="gift-form">
+        <input
+          type="text"
+          placeholder="Escribe tu regalo"
+          [(ngModel)]="newGift"
+          name="gift"
+          required
+        />
+        <button type="submit">+</button>
+      </form>
+  
+      <ul class="gift-list">
+        <li *ngFor="let gift of gifts; let i = index">
+          {{ i + 1 }}. {{ gift }}
+          <button (click)="removeGift(i)">❌</button>
+        </li>
+      </ul>
+  
+      <button class="generate-link" *ngIf="gifts.length > 0" (click)="generateShareableLink()">✨ Generar enlace para compartir</button>
+  
+      <div *ngIf="shareableLink" class="shareable-link">
+        <p>Comparte este enlace:</p>
+        <a [href]="shareableLink" target="_blank">{{ shareableLink }}</a>
+      </div>
+    </div>
+  </div>
+  

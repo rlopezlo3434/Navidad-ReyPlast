@@ -1,0 +1,8 @@
+body {
+    background-image: url('../assets/fondo.jpg'); /* Ruta de tu imagen */
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-attachment: fixed; /* Fija la imagen al fondo para que no se mueva al hacer scroll */
+    margin: 0; /* Elimina el margen predeterminado del body */
+    height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+}
